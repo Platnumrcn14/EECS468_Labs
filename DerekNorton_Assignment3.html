@@ -1,0 +1,76 @@
+<!-- Name: EECS 468 Assignment 3 -->
+<!-- Description: The funcion is a tabbed panel implementation with the active tab colored red, unopen tabs in blue -->
+<!-- Inputs: mouse clicks from user -->
+<!-- Output: selectable tabbed panels and text -->
+<!-- Collaborators: None -->
+<!-- Author: Derek Norton -->
+<!-- Creation Date: 10/1/2023 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Derek's Go KU! Page</title> <!-- setting web page title -->
+    <style> /*allows for more modern styling*/
+        .tab { /* sets styling for text blocks*/
+            display: none;
+        }
+        
+        .tab.current {  /*sets format for tab blocks*/
+            display: block;
+        }
+        
+        .data-tabname {  /*sets details for tab blocks*/
+            cursor: pointer; /* changes mouse cursor appearence when hovering over button */
+            padding: 10px 20px;  /* Adjusts height and width respectively of the buttons */
+            background-color: #007BFF; /*background color for inactive tabs (blue)*/
+            color: #fff; /* color of text (white) */
+            border: none; /*border color (none) */
+            border-radius: 9px; /*Rounding of borders of buttons*/
+            margin-right: 5px; /*separation of buttons*/
+        }
+
+        .data-tabname.current {
+            background-color: red; /* color for tab that is currently open */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button class="data-tabname current" onclick="openTab('Rock')">Rock</button> <!--Initializing first tab button labeled "current" to make it the default starting point of the program--> 
+        <button class="data-tabname" onclick="openTab('Chalk')">Chalk</button> <!--Initializing second tab button-->
+        <button class="data-tabname" onclick="openTab('Jayhawk')">Jayhawk</button> <!--Initializing third tab button-->
+        <button class="data-tabname" onclick="openTab('Go KU!')">Go KU!</button>  <!--Initializing fourth tab button-->
+    </div>
+
+    <div id="Rock" class="tab current"> <!--setting the display text when each button is pressed-->
+        <h2>Rock...</h2>
+    </div>
+
+    <div id="Chalk" class="tab"> 
+        <h2>Rock Chalk ...</h2>
+    </div>
+
+    <div id="Jayhawk" class="tab">
+        <h2>Rock Chalk Jayhawk ...</h2>
+    </div>
+
+    <div id="Go KU!" class="tab">
+        <h2>Rock Chalk Jayhawk - Go KU!</h2>
+    </div>
+
+
+    <script>
+function openTab(tabId) {  //function for changing the tab when the button is clicked
+            const tabs = document.querySelectorAll('.tab'); //selects elements in the DOM "tab"
+            tabs.forEach(tab => tab.classList.remove('current')); //deselects the tab previously open
+
+            document.getElementById(tabId).classList.add('current'); //changes view to the tab selected by user
+
+            // Update the active tab button
+            const buttons = document.querySelectorAll('.data-tabname'); //collects all elements of .tab
+            buttons.forEach(button => button.classList.remove('current')); //removes the word "current" from all class names where found
+            document.querySelector(`[onclick="openTab('${tabId}')"]`).classList.add('current'); //adds the word "current" to the tab selected by the user, coloring the active tab red
+        }
+    </script>
+</body>
+</html>

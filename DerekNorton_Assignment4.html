@@ -1,0 +1,78 @@
+<!-- Name: EECS 468 Assignment 4 -->
+<!-- Description: A window displaying multicolored pie charts -->
+<!-- Input: none -->
+<!-- Output: Pie charts with headers and labels  -->
+<!-- Collaborators: None -->
+<!-- Author: Derek Norton -->
+<!-- Creation Date: 10/18/2023 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pie Chart</title>
+</head>
+<body>
+    <h2>Pie chart 1</h2> <!--Setting header for first pie chart-->
+    <canvas id="pieChart1" width="400" height="400"></canvas> <!--Initiating first pie chart and setting dimensions-->
+    <h2>Pie chart 2</h2> <!--Setting header for first pie chart-->
+    <canvas id="pieChart2" width="400" height="400" style="margin-top: 20px;"></canvas>></canvas> <!--Initiating first pie chart and setting dimensions-->
+    <script>
+        // Initiating canvas elements for first pie chart
+        var canvas = document.getElementById('pieChart1');
+        var ctx1 = canvas.getContext('2d');
+
+        // Initiating canvas elements for second pie chart
+        var canvas2 = document.getElementById('pieChart2');
+        var ctx2 = canvas2.getContext('2d');
+
+        // Data for the first pie chart
+        var data1 = [
+            { label: 'Very happy', value: 104, color: 'red' }, // label: text that will be attached to each section, value: delegating the amount of
+            { label: 'No Comment', value: 18, color: 'blue' }, // space for each section, color: setting color for each slice
+            { label: 'Neutral', value: 87, color: 'green' },
+            { label: 'Unhappy', value: 51, color: 'orange' },
+            { label: 'Very Unhappy', value: 26, color: 'purple' },
+            { label: 'Happy', value: 63, color: 'yellow' }
+        ];
+        // Data for the second pie chart
+        var data2 = [
+            { label: 'Satisfied', value: 927, color: 'red' }, // label: text that will be attached to each section, value: delegating the amount of
+            { label: 'No Comment', value: 213, color: 'blue' }, // space for each section, color: setting color for each slice
+            { label: 'Neutral', value: 463, color: 'green' },
+            { label: 'Unhappy', value: 510, color: 'yellow' }
+        ];
+
+        // Function to draw the pie chart 
+        function drawPieChart(ctx, data) { //function inputs are the canvas parameters and the data (labels, values, colors)
+            var total = data.reduce(function(prev, current) { 
+                return prev + current.value; // function drawing pie chart
+            }, 0);
+
+            var startAngle = 0; //marking start point of pie chart
+            for (var i = 0; i < data.length; i++) { //for loop iterating through each line in data
+                var sliceAngle = (Math.PI * 2 * data[i].value) / total; //function determining the size of each slice in pie chart
+                ctx.fillStyle = data[i].color; //sets each color of pie chart
+
+                ctx.beginPath(); 
+                ctx.moveTo(canvas.width / 2, canvas.height / 2); //defines centerpoint of pie chart
+                ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 3, startAngle, startAngle + sliceAngle); //defines positioning of perimiter of pie chart
+                ctx.lineTo(canvas.width / 2, canvas.height / 2); 
+                ctx.fill(); 
+
+                //setting the coordinates and stying of the labels
+                var labelX = canvas.width / 2 + Math.cos(startAngle + sliceAngle / 2) * (canvas.width / 3);
+                var labelY = canvas.height / 2 + Math.sin(startAngle + sliceAngle / 2) * (canvas.height / 3);
+                ctx.fillStyle = 'black'; //label color
+                ctx.font = '14px Arial'; //label font
+                ctx.fillText(data[i].label, labelX, labelY);
+
+                startAngle += sliceAngle; //ensures the entire circle is filled out
+            }
+        }
+        // Call the function to draw the pie chart
+        drawPieChart(ctx1, data1);
+        // Call the function to draw the pie chart
+        drawPieChart(ctx2, data2);
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+//EECS 468 Assignment 1 Exercise 2.1
+//Description: Outputs lines of "X"s increasing by one in length with each iteration
+//Inputs: none
+//Output: 10 lines of "X"s increasing by 1 with each iteration
+//Colaberators: None
+//Sources: myself, ChatGPT
+//Author Derek Norton
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="output"></div>
+
+    <script>
+	//Source: ChatGPT
+        let myString = ""; //Initializing string
+        const outputDiv = document.getElementById("output"); //declaring HDMI output variable
+
+        for (let i = 0; i < 10; i++) { //Initializing for loop to iterate 10 times
+            myString += "X"; //Adds X to the end of the string beginning each iteration
+            outputDiv.innerHTML += myString + "<br>"; //Printing the string
+        }
+    </script>
+</body>
+</html>

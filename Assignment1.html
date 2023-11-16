@@ -1,0 +1,44 @@
+<!--EECS 468 Assignment 1-->
+<!--Hello World! examples using JavaScript and HTML-->
+<!--Inputs: button clicking by user-->
+<!--Output: Browser window with 2 test buttons-->
+<!--Collaborators: None-->
+<!--Sources used: 8-25 class powerpoint, ChatGPT-->
+<!--Author: Derek Norton-->
+<!--Creation date: Sept 1, 2023-->
+
+<!/*Framework of first button sourced from ChatGPT and modified to fit purpose by Author*/>
+<!--Creation of first button-->
+	<button id="myButton">Test 1 For Hello World</button>
+<!--Initializing javascript-->
+	<script>
+<!--fetching button creation-->
+  	  var button = document.getElementById("myButton");
+
+<!--Creating event for user when button is clicked-->
+  	  button.addEventListener("click", function() {
+<!--Setting display message when button is clicked-->
+	    alert("Hello World!");
+  	  });
+<!--Ending javascript protocal-->
+	</script>
+<!/*Ending of first button framework, End of ChatGPT sourcing*/>
+
+
+<!/*Second button framework sourced from 8-25 class powerpoint and modified to fit purpose by Author*/>
+<!--setting inital display message for user above second button, blank until clicked-->
+	<p id="myPara">  </p>
+<!--Creation of second button-->
+	<button type="button" onclick="changeText()">Test 2 For Hello World</button>
+<!--Initializing javascript-->
+	<script>
+<!--Declaring type of event when button is clicked, change text in this case-->
+	function changeText(){
+<!--Declaring what text is changed when button is clicked-->
+	var element = document.getElementById("myPara");
+<!--Declaring what text is changed to when second button is clicked-->
+	element.innerHTML = "Hello <br><br>World!";
+	}
+<!--Ending javasript-->
+	</script>
+<!/*Ending of second button framework, End of class powerpoint sourcing*/> 

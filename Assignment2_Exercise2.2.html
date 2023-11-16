@@ -1,0 +1,28 @@
+//EECS 468 Assignment 1
+//Description: returns numbers not divisible by 4 and 7 using JavaScript and HTML
+//Inputs: none
+//Output: 100 lines of numbers or exception statements
+//Colaberators: None
+//Sources: myself, ChatGPT
+//Author Derek Norton
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="output"></div> //initializing output, source chatGPT
+<script>
+const outputDiv = document.getElementById("output"); //Declaring output variable
+for (let i = 0; i < 100; i++) { //initializing for loop, source: myself
+	if ((i + 1) % 7 === 0 && (i + 1) % 4 === 0){ //excluding numbers divisible by 7 & 4, source: chatGPT
+	outputDiv.innerHTML += "Divisible by 4 and 7" + "<br>";
+}	else if ((i + 1) % 4 === 0) { //excluding numbers divisible by 4 source:myself
+	outputDiv.innerHTML += "Divisible by 4" + "<br>";
+}	else if ((i + 1) % 7 === 0) { //excluding numbers divisible by 7 source:myself
+	outputDiv.innerHTML += "Divisible by 7" + "<br>";
+}	else{ //returns number if no exceptions are raised source ChatGPT
+	outputDiv.innerHTML += (i + 1) + "<br>";
+}
+}
+    </script>
+</body>
+</html>
